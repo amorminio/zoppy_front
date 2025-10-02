@@ -1,0 +1,60 @@
+<div class="home-container h-full flex flex-col">
+  <mat-toolbar id="toolbar">
+    <div class="flex items-center">
+      <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="ml-2">Desafio Técnico</span>
+    </div>
+
+    <div class="flex items-center w-20 ml-auto">
+      <a href="https://www.zoppy.com.br/" target="_blank">
+        <img src="images/logo.png" alt="Zoppy Logo">
+      </a>
+    </div>
+  </mat-toolbar>
+
+  <mat-drawer-container class="h-full pt-2">
+    <mat-drawer #drawer class="!w-70" mode="side" opened="true">
+      <mat-nav-list class="!p-4">
+        <mat-list-item class="!flex !items-center !justify-center ">
+          <div class="flex items-center text-[var(--primary-color)]">
+            <ng-icon [svg]="homeIcon" size="22" />
+            <a matLine class="pl-2" (click)="navigate('home')">Home</a>
+          </div>
+        </mat-list-item>
+        <mat-list-item class="!flex !items-center !justify-center ">
+          <div class="flex items-center text-[var(--primary-color)]">
+            <ng-icon [svg]="usersIcon" size="22" />
+            <a matLine class="pl-2" (click)="navigate('clients')">Clientes</a>
+          </div>
+        </mat-list-item>
+        <mat-list-item class="!flex !items-center !justify-center ">
+          <div class="flex items-center text-[var(--primary-color)]">
+            <ng-icon [svg]="cartIcon" size="22" />
+            <a matLine class="pl-2" (click)="navigate('orders')">Pedidos</a>
+          </div>
+        </mat-list-item>
+        <mat-list-item class="!flex !items-center !justify-center ">
+          <div class="flex items-center text-[var(--primary-color)]">
+            <ng-icon [svg]="productIcon" size="22" />
+            <a matLine class="pl-2" (click)="navigate('products')">Produtos</a>
+          </div>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-drawer>
+
+    <!-- ! OUTLET-->
+     <div class="h-full">
+      <router-outlet />
+     </div>
+    <!-- ! OUTLET-->
+
+  </mat-drawer-container>
+
+  <!-- !FOOTER -->
+  <div class="h-8 flex items-center">
+    Footer
+  </div>
+
+</div>

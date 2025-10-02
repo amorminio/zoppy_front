@@ -1,4 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Botões de Ação: Azul Médio Vibrante (#3B82F6)
+// Texto Principal: Cinza Escuro (#374151)
+// Títulos: Azul Escuro Principal (#1E3A8A)
+// Ícones/Destaques:  ou Roxo/Índigo (#8B5CF6)
+
+:root {
+  --primary-color: #1E3A8A;
+  --secondary-color: #3B82F6;
+
+  // Cores de destaque
+  --accent1: #8B5CF6;
+
+  // Contraste para texto, fundo e bordas
+  --backg1: #374151;
+  --backg2: #F3F4F6;
+  --backg3: #FFFFFF;
+
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  display: flex;
+}
