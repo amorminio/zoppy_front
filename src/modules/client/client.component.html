@@ -1,1 +1,15 @@
-<p>client works!</p>
+<div class="flex flex-col gap-2">
+    <div class="header flex justify-between px-3">
+      <div class="flex items-center gap-2 text-[var(--primary-color)]">
+        <ng-icon [svg]="usersIcon" size="22" />
+        <span class="title text-2xl">Clientes</span>
+      </div>
+    <div class="actions">
+      <button class="flex items-center gap-2 bg-[var(--accent1)] text-[var(--accent1-contrast)] px-2 py-1 rounded" matRipple (click)="addClient()">
+        <ng-icon [svg]="plusIcon" size="22" />
+        <div>Adicionar </div>
+      </button>
+    </div>
+    </div>
+    <data-table></data-table>
+</div>

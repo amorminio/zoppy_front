@@ -28,7 +28,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   navigate(link: any) {
-    debugger
     this.router.navigate([link])
   }
 }
