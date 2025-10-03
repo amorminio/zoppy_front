@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { NgIconComponent } from '@ng-icons/core';
-import { phosphorHouse, phosphorUsers, phosphorShoppingCart, phosphorBarcode } from '@ng-icons/phosphor-icons/regular';
+import { phosphorHouse, phosphorUsers, phosphorShoppingCart, phosphorBarcode, phosphorList } from '@ng-icons/phosphor-icons/regular';
 
 @Component({
   selector: 'main-layout',
@@ -19,6 +19,7 @@ import { phosphorHouse, phosphorUsers, phosphorShoppingCart, phosphorBarcode } f
 export class MainComponent {
 
   // Icons
+  menuIcon = phosphorList;
   homeIcon = phosphorHouse;
   usersIcon = phosphorUsers;
   cartIcon = phosphorShoppingCart;

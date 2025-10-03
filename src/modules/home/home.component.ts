@@ -13,7 +13,7 @@ import { phosphorHouse, phosphorUsers, phosphorShoppingCart,phosphorBarcode } fr
 @Component({
     selector: 'home',
     standalone: true,
-    imports: [RouterOutlet, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, NgIconComponent],
+    imports: [ MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule ],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
 })

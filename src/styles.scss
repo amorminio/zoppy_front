@@ -1,4 +1,5 @@
 @use "tailwindcss";
+@use '@angular/material' as mat;
 
 // Botões de Ação: Azul Médio Vibrante (#3B82F6)
 // Texto Principal: Cinza Escuro (#374151)
@@ -9,16 +10,28 @@
   --primary-color: #1E3A8A;
   --secondary-color: #3B82F6;
 
+
   // Cores de destaque
   --accent1: #8B5CF6;
-  --accent1-contrast: #FFFFFF;
+  --accent-contrast: #FFFFFF;
+  --accent2:#9667fe;
 
 
-  // Contraste para texto, fundo e bordas
+  // Contraste para texto, fundo, bordas e hover
   --backg1: #374151;
-  --backg2: #F3F4F6;
+  --backg2: #dbecfcd7;
   --backg3: #FFFFFF;
+  --backg3-hover: #98a6ff;
 
+  // Material Theming
+  @include mat.dialog-overrides((
+    container-shape: 5px,
+  ));
+
+  @include mat.list-overrides((
+    active-indicator-shape: 6px,
+    list-item-hover-state-layer-color: var(--backg3-hover),
+  ));
 }
 
 
@@ -30,3 +43,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   display: flex;
 }
+
+
+

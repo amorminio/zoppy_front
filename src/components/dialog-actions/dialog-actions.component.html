@@ -1,0 +1,7 @@
+<div class="flex justify-end gap-2 px-2 bg-[var(--accent1)] text-[var(--accent-contrast)] p-2">
+
+  @for (action of actions; track $index) {
+    <div class="cursor-pointer" (click)="emitAction(action.action)">{{action.label}}</div>
+  }
+
+</div>

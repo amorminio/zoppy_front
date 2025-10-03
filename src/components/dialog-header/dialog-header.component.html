@@ -1,0 +1,4 @@
+<div class="flex justify-between px-2 bg-[var(--accent1)] text-[var(--accent-contrast)] p-2">
+  <div class="text-lg font-bold">{{ title }}</div>
+  <ng-icon class="cursor-pointer" [svg]="closeIcon" size="26" (click)="emitAction('CLOSE')"/>
+</div>

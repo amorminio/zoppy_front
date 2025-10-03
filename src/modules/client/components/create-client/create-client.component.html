@@ -1,1 +1,118 @@
-<p>create-client works!</p>
+<div>
+  <dialog-header title="Criar Cliente" (dialogTitleAction)="handleDialogTitleAction($event)"></dialog-header>
+
+  <!-- ! CONTENT -->
+   <div class="p-6 w-130">
+    <form [formGroup]="newClientForm">
+      <div class="grid grid-cols-2 gap-2">
+
+        <div class="col-span-2">
+          <mat-form-field class="w-full">
+            <mat-label>Nome</mat-label>
+            <input [formControlName]="'name'" type="text" matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-2">
+          <mat-form-field class="w-full">
+            <mat-label>Email</mat-label>
+            <input [formControlName]="'email'" type="text" matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="">
+          <mat-form-field class="w-full">
+            <mat-label>Telefone</mat-label>
+            <input [formControlName]="'phoneNumber'" type="text" matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="">
+          <mat-form-field>
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [formControlName]="'birthDate'" [matDatepicker]="picker" [disabled]=true>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker ></mat-datepicker>
+          </mat-form-field>
+          <!-- <mat-form-field class="w-full">
+            <mat-label>Data de Nascimento</mat-label>
+            <input [formControlName]="'birthDate'" type="date" matInput />
+          </mat-form-field> -->
+        </div>
+
+        <div class="">
+          <mat-form-field class="w-full">
+            <mat-label>Senha</mat-label>
+            <input [formControlName]="'password'" type="password" matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="">
+          <mat-form-field class="w-full">
+            <mat-label>Confirmar senha</mat-label>
+            <input type="password" matInput />
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+   </div>
+
+
+  <dialog-actions [actions]="actions"></dialog-actions>
+</div>
+<!--
+
+<div class="w-full max-w-3xl" *transloco="let t; prefix: 'CONFIGURATION'">
+  <form [formGroup]="generalForm">
+
+    <div class="w-full">
+      <div class="text-xl"> {{t('GENERAL.CONNECTION_SETTINGS')}}</div>
+
+    </div>
+
+    <div class="mt-8 grid w-full gap-6 sm:grid-cols-4">
+
+      <div class="sm:col-span-4">
+        <mat-form-field class="w-full" [subscriptSizing]="'dynamic'">
+          <mat-label>{{t('GENERAL.RECONNECT_TIME')}}</mat-label>
+          <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:clock'" matPrefix></mat-icon>
+          <input [formControlName]="'timeReconnect'" type="number" matInput />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="my-10 border-t"></div>
+
+    <div class="w-full">
+      <div class="text-xl">{{t('GENERAL.EVENT_LOGS')}}</div>
+    </div>
+    <div class="mt-8 grid w-full gap-6 sm:grid-cols-4">
+      <div class="flex items-center justify-between sm:col-span-4">
+        <div
+             class="flex-auto cursor-pointer"
+             (click)="eventLogs.toggle()">
+          <div class="font-medium leading-6">
+            {{t('GENERAL.ENABLE_EVENT_LOGS')}}
+          </div>
+          <div class="text-secondary text-md">
+            {{t('GENERAL.EVENT_LOGS_DESCRIPTION')}}
+          </div>
+        </div>
+        <mat-slide-toggle
+                          class="ml-4"
+                          [color]="'primary'"
+                          [formControlName]="'eventLogs'"
+                          #eventLogs>
+        </mat-slide-toggle>
+      </div>
+    </div>
+
+    <div class="my-10 border-t"></div>
+
+    <div class="flex items-center justify-end gap-2" *transloco="let t; prefix: 'COMMON'">
+      <button class="flex justify-center items-center h-max" mat-stroked-button type="button"
+              (click)="cancel()">{{t('CANCEL')}}</button>
+      <button mat-flat-button type="button" [color]="'primary'" (click)="saveForm()">{{t('SAVE')}}</button>
+    </div>
+  </form>
+</div> -->

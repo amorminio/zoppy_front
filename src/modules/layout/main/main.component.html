@@ -1,42 +1,46 @@
-<div class="home-container h-full flex flex-col">
-  <mat-toolbar id="toolbar">
-    <div class="flex items-center">
-      <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="ml-2">Desafio Técnico</span>
-    </div>
+<div class="home-container h-full flex flex-col !bg-[var(--backg3)]">
+  <!--! Toolbar  -->
+  <div class="h-16 shadow-lg z-10">
+    <div class="w-full flex items-center h-16 p-4 bg-[var(--secondary-color)]">
+      <div class="flex items-center text-white gap-2 select-none">
+          <ng-icon class="cursor-pointer" [svg]="menuIcon" size="28" (click)="drawer.toggle()" />
+        <!-- <button mat-icon-button aria-label="Example icon-button with menu icon" ">
+        </button> -->
+        <span class="ml-2 text-xl">Desafio Técnico</span>
+      </div>
 
-    <div class="flex items-center w-20 ml-auto">
-      <a href="https://www.zoppy.com.br/" target="_blank">
-        <img src="images/logo.png" alt="Zoppy Logo">
-      </a>
+      <div class="flex items-center w-20 ml-auto">
+        <a href="https://www.zoppy.com.br/" target="_blank">
+          <img src="images/logo.png" alt="Zoppy Logo">
+        </a>
+      </div>
     </div>
-  </mat-toolbar>
+  </div>
+
 
   <mat-drawer-container class="h-full pt-2">
-    <mat-drawer #drawer class="!w-70" mode="side" opened="true">
+    <mat-drawer #drawer class="!w-70 !bg-[var(--backg3)]" mode="side" opened="true">
       <mat-nav-list class="!p-4">
         <mat-list-item class="!flex !items-center !justify-center ">
-          <div class="flex items-center text-[var(--primary-color)]">
+          <div class="flex items-center text-[var(--accent2)]">
             <ng-icon [svg]="homeIcon" size="22" />
             <a matLine class="pl-2" (click)="navigate('home')">Home</a>
           </div>
         </mat-list-item>
         <mat-list-item class="!flex !items-center !justify-center ">
-          <div class="flex items-center text-[var(--primary-color)]">
+          <div class="flex items-center text-[var(--accent2)]">
             <ng-icon [svg]="usersIcon" size="22" />
             <a matLine class="pl-2" (click)="navigate('clients')">Clientes</a>
           </div>
         </mat-list-item>
         <mat-list-item class="!flex !items-center !justify-center ">
-          <div class="flex items-center text-[var(--primary-color)]">
+          <div class="flex items-center text-[var(--accent2)]">
             <ng-icon [svg]="cartIcon" size="22" />
             <a matLine class="pl-2" (click)="navigate('orders')">Pedidos</a>
           </div>
         </mat-list-item>
         <mat-list-item class="!flex !items-center !justify-center ">
-          <div class="flex items-center text-[var(--primary-color)]">
+          <div class="flex items-center text-[var(--accent2)]">
             <ng-icon [svg]="productIcon" size="22" />
             <a matLine class="pl-2" (click)="navigate('products')">Produtos</a>
           </div>
@@ -45,7 +49,7 @@
     </mat-drawer>
 
     <!-- ! OUTLET-->
-     <div class="h-full p-6">
+     <div class="h-full p-6 mx-2 rounded-lg bg-[var(--backg3)]">
       <router-outlet />
      </div>
     <!-- ! OUTLET-->
