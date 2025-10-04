@@ -2,17 +2,18 @@
 
   <div class="header flex items-center justify-between px-3 w-full h-12">
     <div class="flex items-center gap-2 text-[var(--primary-color)]">
-      <ng-icon [svg]="usersIcon" size="22" />
-      <span class="title text-2xl">Clientes</span>
+      <ng-icon [svg]="productIcon" size="22" />
+      <span class="title text-2xl">Produtos</span>
     </div>
     <div class="actions flex items-center gap-2">
 
       <div class="flex items-center border-1 border-[var(--accent1)] rounded-lg h-12 px-2">
-        <input type="text" placeholder="Pesquisa ... " class="h-full p-0 border-transparent" [(ngModel)]="searchField"  (ngModelChange)="filterData()">
+        <input type="text" placeholder="Pesquisa ... " class="h-full p-0 border-transparent" [(ngModel)]="searchField"
+               (ngModelChange)="filterData()">
       </div>
 
       <button class="flex items-center gap-2 h-12 bg-[var(--accent1)] text-[var(--accent-contrast)] px-4 py-2 rounded-lg border-2 hover:bg-[var(--backg3)] hover:border-[var(--accent1)]
-      hover:!text-[var(--accent2)] transition-all cursor-pointer" matRipple (click)="addClient()">
+      hover:!text-[var(--accent2)] transition-all cursor-pointer" matRipple (click)="addProduct()">
         <ng-icon [svg]="plusIcon" size="26" />
         <div>Adicionar </div>
       </button>
@@ -22,14 +23,15 @@
   @if(filteredDataSource && filteredDataSource.length > 0){
   <div class="flex w-full h-full">
     <div class="w-full h-full flex relative">
-      <data-table class="flex" [dataSource]="filteredDataSource" (deleteRecordEvent)="deleteClient($event)" (updateRecordEvent)="updateClient($event)"></data-table>
+      <data-table class="flex" [dataSource]="filteredDataSource" (deleteRecordEvent)="deleteProduct($event)"
+                  (updateRecordEvent)="updateProduct($event)"></data-table>
     </div>
   </div>
   }
   @else{
   <div class="flex items-center justify-center h-full text-2xl text-[var(--accent2)] gap-4">
     <ng-icon [svg]="emptyIcon" size="30" />
-    <div class="">Nenhum cliente cadastrado</div>
+    <div class="">Nenhum produto cadastrado</div>
   </div>
   }
 </div>

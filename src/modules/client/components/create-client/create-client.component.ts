@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { DialogHeaderComponent } from '../../../../components/dialog-header/dialog-header.component';
 import { DialogActionsComponent } from '../../../../components/dialog-actions/dialog-actions.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -20,7 +20,7 @@ import { Action } from '../../../../models/action.model';
   templateUrl: './create-client.component.html',
   styleUrls: ['./create-client.component.scss']
 })
-export class CreateClientComponent {
+export class CreateClientComponent implements OnInit {
 
   readonly dialogRef = inject(MatDialogRef<CreateClientComponent>)
   data = inject(MAT_DIALOG_DATA)
@@ -61,88 +61,41 @@ export class CreateClientComponent {
 
   }
 
+  ngOnInit(): void {
+    if(this.data){
+      this.newClient = this.data
+
+      this.newClientForm = this._formBuilder.group({
+        name: [this.newClient.name],
+        email: [this.newClient.email],
+        password: [this.newClient.password],
+        phoneNumber: [this.newClient.phoneNumber],
+        address: [this.newClient.address],
+        birthDate: [this.newClient.birthDate],
+      });
+    }
+  }
+
+
   handleDialogTitleAction(action: string) {
     if (action === 'CLOSE') {
       this.dialogRef.close()
     }
   }
 
+  dialogActionsHandler(action: string) {
+    if (action === 'CLOSE') {
+      this.dialogRef.close()
+    }
+    if (action === 'SAVE' && !this.data) {
+      let output: Client = this.newClientForm.value
+      this.dialogRef.close(output)
+    } else{
+      // ! Update
+      let output: Client = this.newClientForm.value
+      output.id = this.data.id
+      this.dialogRef.close(output)
+    }
+  }
+
 }
-
-// @Component({
-//   selector: 'general-settings',
-//   encapsulation: ViewEncapsulation.None,
-//   changeDetection: ChangeDetectionStrategy.OnPush,
-//   imports: [
-//     FormsModule,
-//     ReactiveFormsModule,
-//     MatFormFieldModule,
-//     MatIconModule,
-//     MatInputModule,
-//     MatSlideToggleModule,
-//     MatButtonModule,
-//     TranslocoDirective],
-
-//   templateUrl: './general-settings.component.html',
-//   styleUrl: './general-settings.component.scss'
-// })
-// export class GeneralSettingsComponent implements OnInit {
-
-//   user: User
-//   generalForm: UntypedFormGroup;
-//   initialValues: any;
-
-//   constructor(
-//     private _formBuilder: UntypedFormBuilder,
-//     private _userService: UserService,
-//     private _toastr: ToastrService,
-//     private _transloco: TranslocoService
-//   ) { }
-
-
-//   ngOnInit(): void {
-//     this.user = this._userService.user;
-//     this.initialFormValues()
-//   }
-
-//   private initialFormValues() {
-
-//     let general = this.user.configs?.general || {}
-
-//     let usertimeReconnect: number = general?.timeReconnect || 0
-//     let userEventLogs: number = general?.eventLogs || false
-
-//     this.initialValues = {
-//       timeReconnect: [usertimeReconnect],
-//       eventLogs: [userEventLogs],
-//     }
-
-//     this.generalForm = this._formBuilder.group({
-//       timeReconnect: [usertimeReconnect],
-//       eventLogs: [userEventLogs],
-//     });
-//   }
-
-//   public saveForm() {
-//     const currentFormValues = _.assign({}, this.generalForm.value)
-//     let currentConfig = this.user.configs
-//     _.assign(currentConfig, { general: currentFormValues })
-//     this._userService.updateConfigs(currentConfig).then(response => {
-//       if (response) {
-//         this._toastr.success(this._transloco.translate('COMMON.CRUD.UPDATE'));
-//       }
-//       else {
-//         this._toastr.error(this._transloco.translate('COMMON.CRUD.FAIL_UPDATE'));
-//       }
-//     })
-//   }
-
-//   public cancel() {
-//     this.generalForm = this._formBuilder.group({
-//       timeReconnect: [this.initialValues.timeReconnect],
-//       eventLogs: [this.initialValues.eventLogs],
-//     });
-//   }
-// }
-
-

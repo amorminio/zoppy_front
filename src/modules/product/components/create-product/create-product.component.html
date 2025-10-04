@@ -1,9 +1,9 @@
 <div>
-  <dialog-header title="Criar Cliente" (dialogTitleAction)="handleDialogTitleAction($event)"></dialog-header>
+  <dialog-header title="Criar Produto" (dialogTitleAction)="handleDialogTitleAction($event)"></dialog-header>
 
   <!-- ! CONTENT -->
-   <div class="p-6 w-130">
-    <form [formGroup]="newClientForm">
+  <div class="p-6 w-130">
+    <form [formGroup]="newProductForm">
       <div class="grid grid-cols-2 gap-2">
 
         <div class="col-span-2">
@@ -15,34 +15,28 @@
 
         <div class="col-span-2">
           <mat-form-field class="w-full">
-            <mat-label>Email</mat-label>
-            <input [formControlName]="'email'" type="text" matInput />
+            <mat-label>Descrição</mat-label>
+            <input [formControlName]="'description'" type="text" matInput />
           </mat-form-field>
         </div>
 
         <div class="col-span-2">
           <mat-form-field class="w-full">
-            <mat-label>Telefone</mat-label>
-            <input [formControlName]="'phoneNumber'" type="text" matInput />
+            <mat-label>Categoria</mat-label>
+            <input [formControlName]="'category'" type="text" matInput />
           </mat-form-field>
         </div>
 
         <div class="">
           <mat-form-field class="w-full">
-            <mat-label>Senha</mat-label>
-            <input [formControlName]="'password'" type="password" matInput />
+            <mat-label>Preço</mat-label>
+            <input [formControlName]="'price'" type="number" matInput />
           </mat-form-field>
         </div>
 
-        <div class="">
-          <mat-form-field class="w-full">
-            <mat-label>Confirmar senha</mat-label>
-            <input type="password" matInput />
-          </mat-form-field>
-        </div>
       </div>
     </form>
-   </div>
+  </div>
 
 
   <dialog-actions [actions]="actions" (actionEvent)="dialogActionsHandler($event)"></dialog-actions>

@@ -18,6 +18,8 @@ import { phosphorHouse, phosphorUsers, phosphorShoppingCart, phosphorBarcode, ph
 })
 export class MainComponent {
 
+  selectedItem:string = ''
+
   // Icons
   menuIcon = phosphorList;
   homeIcon = phosphorHouse;
@@ -28,6 +30,7 @@ export class MainComponent {
   constructor(private router: Router) { }
 
   navigate(link: any) {
+    this.selectedItem = link;
     this.router.navigate([link])
   }
 

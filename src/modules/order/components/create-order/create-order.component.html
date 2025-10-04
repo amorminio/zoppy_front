@@ -1,0 +1,36 @@
+<div>
+  <dialog-header title="Criar Pedido" (dialogTitleAction)="handleDialogTitleAction($event)"></dialog-header>
+
+  <!-- ! CONTENT -->
+  <div class="p-6 w-130">
+    <form [formGroup]="newOrderForm">
+      <div class="grid grid-cols-2 gap-2">
+
+        <div class="col-span-2">
+          <mat-form-field class="w-full">
+            <mat-label>Cliente</mat-label>
+            <input [formControlName]="'client_id'" type="text" matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="col-span-2">
+          <mat-form-field class="w-full">
+            <mat-label>Produto</mat-label>
+            <input [formControlName]="'product_id'" type="text" matInput />
+          </mat-form-field>
+        </div>
+
+        <div class="">
+          <mat-form-field class="w-full">
+            <mat-label>Preço</mat-label>
+            <input [formControlName]="'price'" type="number" matInput />
+          </mat-form-field>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+
+  <dialog-actions [actions]="actions" (actionEvent)="dialogActionsHandler($event)"></dialog-actions>
+</div>

@@ -1,23 +1,26 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { DataTableComponent } from '../../components/data-table/data-table.component';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { phosphorShoppingCart, phosphorEmpty, phosphorPlusCircle } from '@ng-icons/phosphor-icons/regular';
 import { NgIconComponent } from "@ng-icons/core";
-import { phosphorUsers, phosphorPlusCircle, phosphorEmpty } from '@ng-icons/phosphor-icons/regular';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
-import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { CreateClientComponent } from './components/create-client/create-client.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+
+import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { ApiZoppyService } from '../../services/api-zoppy.service';
-import { FormsModule } from "@angular/forms";
+import { DataTableComponent } from '../../components/data-table/data-table.component';
+
 
 @Component({
-  selector: 'client',
+  selector: 'app-order',
   standalone: true,
-  imports: [DataTableComponent, NgIconComponent, MatButtonModule, MatRippleModule, MatDialogModule, FormsModule],
   providers: [ApiZoppyService],
-  templateUrl: './client.component.html',
-  styleUrls: ['./client.component.scss']
+  imports: [NgIconComponent, MatButtonModule, MatRippleModule, MatDialogModule, FormsModule, DataTableComponent],
+  templateUrl: './order.component.html',
+  styleUrl: './order.component.scss'
 })
-export class ClientComponent implements OnInit {
+export class OrderComponent {
 
   readonly dialog = inject(MatDialog);
   dataSource: any[] = [];
@@ -25,7 +28,7 @@ export class ClientComponent implements OnInit {
 
   // !Icons
   emptyIcon = phosphorEmpty;
-  usersIcon = phosphorUsers;
+  cartIcon = phosphorShoppingCart;
   plusIcon = phosphorPlusCircle;
   searchField: string = '';
 
@@ -36,7 +39,7 @@ export class ClientComponent implements OnInit {
   }
 
   loadData(){
-    this.apiZoppyService.client_list().subscribe((response: any) => {
+    this.apiZoppyService.order_list().subscribe((response: any) => {
       if (response) {
         this.dataSource = response;
         this.filteredDataSource = response;
@@ -45,7 +48,6 @@ export class ClientComponent implements OnInit {
   }
 
   filterData(){
-
     this.filteredDataSource = this.dataSource.filter((item: any) => {
       return Object.keys(item).some(key => {
         const value = item[key]
@@ -55,44 +57,45 @@ export class ClientComponent implements OnInit {
     })
   }
 
-  addClient() {
-    const dialogRef = this.dialog.open(CreateClientComponent, {
+  addOrder() {
+    const dialogRef = this.dialog.open(CreateOrderComponent, {
       disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.apiZoppyService.client_insert(result).subscribe((response: any) => {
+        this.apiZoppyService.order_insert(result).subscribe((response: any) => {
           this.loadData();
-        },err=>{
+        },(err:any)=>{
           console.log(err)
         });
       }
     });
   }
 
-  deleteClient(id: any) {
-    this.apiZoppyService.client_delete(id).subscribe((response: any) => {
+  deleteOrder(id: any) {
+    this.apiZoppyService.order_delete(id).subscribe((response: any) => {
       this.loadData();
-    },err=>{
+    },(err:any)=>{
       console.log(err)
     });
   }
 
-  updateClient(client: any) {
-    const dialogRef = this.dialog.open(CreateClientComponent, {
+  updateOrder(order: any) {
+    const dialogRef = this.dialog.open(CreateOrderComponent, {
       disableClose: true,
-      data: client
+      data: order
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.apiZoppyService.client_update(result).subscribe((response: any) => {
+        this.apiZoppyService.order_update(result).subscribe((response: any) => {
           this.loadData();
-        },err=>{
+        },(err:any)=>{
           console.log(err)
         });
       }
     });
   }
+
 }

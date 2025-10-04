@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from '../modules/home/home.component';
 import { ClientComponent } from '../modules/client/client.component';
-import { ProductComponent } from '../modules/product/product/product.component';
-import { OrderComponent } from '../modules/order/order/order.component';
+import { ProductComponent } from '../modules/product/product.component';
+import { OrderComponent } from '../modules/order/order.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
